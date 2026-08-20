@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="camply-favicon.svg" type="image/svg+xml">
+<title>Camply — Pra quem quer ser escolhido.</title>
+<meta name="description" content="Camply cria produtos digitais para campanhas que querem ser lembradas.">
+<style>
+:root{
+  --bg:#08090a;
+  --bg-elevated:#0c0d0f;
+  --line:rgba(255,255,255,.10);
+  --line-strong:rgba(255,255,255,.16);
+  --text:#f7f7f8;
+  --muted:#9b9da3;
+  --dim:#6e7077;
+  --accent:#8b5cf6;
+  --accent-2:#a78bfa;
+  --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+a{color:inherit;text-decoration:none}
+.container{width:min(calc(100% - 40px),var(--max));margin:auto}
+
+/* BRAND */
+.brand{
+  display:inline-flex;
+  align-items:center;
+  height:28px;
+}
+.brand img{
+  display:block;
+  width:105px;
+  height:auto;
+  object-fit:contain;
+  filter:grayscale(1) brightness(0) invert(1);
+}
+.brand-footer img{width:78px;filter:grayscale(1);opacity:.42}
+
+/* NAV */
+.nav{
+  position:sticky;top:0;z-index:20;height:64px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  background:rgba(8,9,10,.78);
+  backdrop-filter:blur(16px);
+}
+.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-links{display:flex;align-items:center;gap:27px;color:#8f9197;font-size:13px}
+.nav-links a:hover{color:#fff}
+.nav-cta{
+  padding:8px 13px;border:1px solid var(--line-strong);border-radius:7px;
+  color:#fff;background:rgba(255,255,255,.04);font-size:12px;font-weight:600;
+}
+
+/* HERO */
+.hero{
+  position:relative;padding:130px 0 120px;text-align:center;overflow:hidden;
+}
+.hero:before{
+  content:"";position:absolute;left:50%;top:-180px;transform:translateX(-50%);
+  width:760px;height:560px;
+  background:radial-gradient(circle,rgba(124,58,237,.20) 0%,rgba(124,58,237,.07) 38%,transparent 70%);
+  filter:blur(30px);pointer-events:none;
+}
+.eyebrow{
+  position:relative;display:inline-flex;align-items:center;gap:8px;
+  color:#b8b9be;font-size:12px;font-weight:500;margin-bottom:25px;
+}
+h1{
+  position:relative;margin:0 auto;max-width:900px;
+  font-size:clamp(54px,8.5vw,94px);line-height:.94;
+  letter-spacing:-.075em;font-weight:650;
+}
+.hero-copy{
+  position:relative;max-width:610px;margin:28px auto 0;
+  color:#9b9da3;font-size:17px;line-height:1.6;letter-spacing:-.015em;
+}
+.hero-actions{position:relative;margin-top:34px;display:flex;justify-content:center;gap:9px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:40px;padding:0 16px;border-radius:7px;
+  border:1px solid var(--line-strong);font-size:13px;font-weight:600;transition:.18s ease;
+}
+.btn-primary{background:#f5f5f5;color:#090909;border-color:#f5f5f5}
+.btn-primary:hover{background:#fff;transform:translateY(-1px)}
+.btn-secondary{background:rgba(255,255,255,.04);color:#ddd}
+.btn-secondary:hover{background:rgba(255,255,255,.08);border-color:#292b2f}
+
+/* PRODUCT PREVIEW */
+.hero-grid{
+  position:relative;margin-top:82px;border:1px solid var(--line);border-radius:12px;
+  overflow:hidden;background:
+  linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:48px 48px;min-height:390px;display:grid;place-items:center;
+}
+.mock{
+  width:min(720px,84%);border:1px solid rgba(255,255,255,.13);border-radius:10px;
+  background:#0d0f12;box-shadow:0 35px 100px rgba(0,0,0,.5);
+  overflow:hidden;transform:perspective(1200px) rotateX(3deg);
+}
+.mock-top{height:34px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 12px;gap:5px}
+.dot{width:6px;height:6px;border-radius:50%;background:#383a40}
+.mock-body{padding:35px;text-align:left}
+.mock-label{font-size:10px;color:#777;letter-spacing:.08em;text-transform:uppercase}
+.mock-title{font-size:31px;letter-spacing:-.05em;margin-top:11px;max-width:450px}
+.mock-line{height:7px;width:75%;background:#1b1d21;border-radius:99px;margin-top:18px}
+.mock-line.short{width:48%;margin-top:8px}
+.mock-cardrow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:35px}
+.mock-card{height:95px;border:1px solid #1c1e22;border-radius:7px;background:#101216}
+
+/* SECTIONS */
+section{padding:110px 0;border-top:1px solid rgba(255,255,255,.07)}
+.section-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:44px}
+.section-kicker{font-size:11px;color:#73757b;text-transform:uppercase;letter-spacing:.13em;font-weight:650}
+h2{font-size:clamp(32px,5vw,56px);line-height:1;letter-spacing:-.06em;font-weight:620;margin:10px 0 0}
+.section-desc{max-width:390px;color:#85878e;font-size:14px;line-height:1.65}
+
+/* PRODUCTS */
+.products{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  border-top:1px solid var(--line);border-left:1px solid var(--line);
+}
+.product{
+  min-height:360px;padding:28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  display:flex;flex-direction:column;position:relative;transition:background .2s ease;
+}
+.product:hover{background:rgba(255,255,255,.025)}
+.product-num{font-size:11px;color:#676970;font-variant-numeric:tabular-nums}
+.product h3{font-size:27px;letter-spacing:-.045em;margin:62px 0 9px}
+.product p{color:#85878e;font-size:14px;line-height:1.65;max-width:400px;margin:0}
+.product-bottom{margin-top:auto;padding-top:35px;display:flex;align-items:center;justify-content:flex-end}
+.arrow{
+  width:30px;height:30px;border:1px solid var(--line-strong);border-radius:7px;
+  display:grid;place-items:center;color:#999;transition:.18s ease;
+}
+.product:hover .arrow{color:#fff;border-color:#444}
+.product.featured{background:linear-gradient(135deg,rgba(124,58,237,.10),transparent 45%)}
+
+/* MANIFESTO */
+.manifesto{max-width:950px;margin:auto;text-align:center;padding:30px 0 15px}
+.manifesto p{
+  margin:0;font-size:clamp(34px,5vw,64px);line-height:1.05;
+  letter-spacing:-.065em;color:#5e6066;font-weight:600;
+}
+.manifesto p span{color:#f3f3f4}
+.manifesto small{display:block;margin-top:32px;color:#777980;font-size:12px}
+
+/* STUDIO */
+.studio{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}
+.studio-main{padding:42px;border-right:1px solid var(--line)}
+.studio-main h2{font-size:48px}
+.studio-main p{max-width:480px;color:#85878e;line-height:1.7;font-size:14px}
+.studio-list{display:grid;grid-template-columns:1fr 1fr}
+.studio-item{padding:24px;border-bottom:1px solid var(--line);color:#a3a5aa;font-size:13px}
+.studio-item:nth-child(odd){border-right:1px solid var(--line)}
+.studio-item:nth-last-child(-n+2){border-bottom:0}
+.studio-item span{display:block;color:#e9e9ea;margin-bottom:7px;font-weight:600}
+
+/* FINAL */
+.final{
+  padding:150px 0;text-align:center;
+  background:radial-gradient(circle at 50% 40%,rgba(124,58,237,.11),transparent 45%);
+}
+.final h2{max-width:720px;margin:0 auto;font-size:clamp(48px,7vw,82px)}
+.final p{color:#8c8e94;margin:25px auto 30px;max-width:480px;line-height:1.6;font-size:15px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:#64666c;font-size:11px}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.footer-links{display:flex;gap:18px}
+.footer-links a:hover{color:#aaa}
+
+/* RESPONSIVE */
+@media(max-width:760px){
+  .container{width:min(calc(100% - 28px),var(--max))}
+  .nav-links{display:none}
+  .nav-cta{padding:8px 11px}
+  .brand img{width:94px}
+  .hero{padding:92px 0 75px}
+  .hero-grid{margin-top:55px;min-height:270px}
+  .mock{width:88%}
+  .mock-body{padding:22px}
+  .mock-title{font-size:23px}
+  .section-head{display:block}
+  .section-desc{margin-top:20px}
+  .products{grid-template-columns:1fr}
+  .product{min-height:310px}
+  .studio{grid-template-columns:1fr}
+  .studio-main{border-right:0;border-bottom:1px solid var(--line)}
+  .studio-main h2{font-size:39px}
+  .footer-inner{display:block}
+  .footer-links{margin-top:14px}
+}
+@media(max-width:440px){
+  .hero-actions{flex-direction:column}
+  .hero-actions .btn{width:100%}
+  h1{font-size:54px}
+  .product h3{margin-top:50px}
+  .studio-list{grid-template-columns:1fr}
+  .studio-item:nth-child(odd){border-right:0}
+  .studio-item:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
+  .studio-item:last-child{border-bottom:0}
+}
+</style>
+</head>
+
+<body>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#" aria-label="Camply">
+      <img src="camply-logo.png" alt="Camply">
+    </a>
+    <div class="nav-links">
+      <a href="#produtos">Produtos</a>
+      <a href="#manifesto">Manifesto</a>
+      <a href="#studio">Studio</a>
+    </div>
+    <a class="nav-cta" href="#produtos">Começar</a>
+  </div>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Infraestrutura digital para campanhas</div>
+    <h1>Pra quem quer<br>ser escolhido.</h1>
+    <p class="hero-copy">
+      Antes do voto, existe a escolha. E antes da escolha, existe tudo aquilo que faz alguém lembrar de você.
+      A Camply cria produtos para esse espaço.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#produtos">Começar pelo meu perfil <span>→</span></a>
+      <a class="btn btn-secondary" href="#manifesto">Conhecer a Camply</a>
+    </div>
+
+    <div class="hero-grid" aria-hidden="true">
+      <div class="mock">
+        <div class="mock-top"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+        <div class="mock-body">
+          <div class="mock-label">camply / presence</div>
+          <div class="mock-title">Uma presença digital que trabalha pelo seu nome.</div>
+          <div class="mock-line"></div>
+          <div class="mock-line short"></div>
+          <div class="mock-cardrow"><div class="mock-card"></div><div class="mock-card"></div><div class="mock-card"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="manifesto">
+  <div class="container">
+    <div class="manifesto">
+      <p>
+        Um nome precisa ser <span>visto.</span><br>
+        Uma mensagem precisa ser <span>ouvida.</span><br>
+        Uma história precisa ser <span>encontrada.</span>
+      </p>
+      <small>O resto, a gente constrói.</small>
+    </div>
+  </div>
+</section>
+
+<section id="produtos">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">Produtos</div>
+        <h2>Comece pelo que<br>faz sentido.</h2>
+      </div>
+      <p class="section-desc">
+        Produtos independentes, feitos para resolver uma parte específica da presença digital de uma campanha.
+      </p>
+    </div>
+
+    <div class="products">
+      <a class="product featured" href="#contato">
+        <span class="product-num">01</span>
+        <h3>Camply Perfil</h3>
+        <p>Seu nome onde você não está. Uma ferramenta que transforma a foto de quem apoia você em uma nova presença para o seu nome.</p>
+        <div class="product-bottom"><span class="arrow">↗</span></div>
+      </a>
+
+      <a class="product" href="#contato">
+        <span class="product-num">02</span>
+        <h3>Camply Music</h3>
+        <p>Faça seu nome ser ouvido. Uma música original criada a partir da sua identidade, sua mensagem e seu número.</p>
+        <div class="product-bottom"><span class="arrow">↗</span></div>
+      </a>
+
+      <a class="product" href="#contato">
+        <span class="product-num">03</span>
+        <h3>Camply Site</h3>
+        <p>Quando procurarem, esteja lá. Um endereço próprio para reunir sua história, suas ideias, seus canais e aquilo que você quer que seja encontrado.</p>
+        <div class="product-bottom"><span class="arrow">↗</span></div>
+      </a>
+
+      <a class="product" href="#contato">
+        <span class="product-num">04</span>
+        <h3>Camply FAQ</h3>
+        <p>Uma experiência inteligente para responder dúvidas sobre você, suas ideias, sua trajetória e sua agenda.</p>
+        <div class="product-bottom"><span class="arrow">↗</span></div>
+      </a>
+
+      <a class="product" href="#contato">
+        <span class="product-num">05</span>
+        <h3>Camply Links</h3>
+        <p>Um endereço. Todos os caminhos. WhatsApp, Instagram, Site, Música, propostas, vídeos e outros canais em uma única página.</p>
+        <div class="product-bottom"><span class="arrow">↗</span></div>
+      </a>
+
+      <a class="product" href="#contato">
+        <span class="product-num">06</span>
+        <h3>Camply Base</h3>
+        <p>Para quem decidiu estar junto. Um ponto de entrada para quem quer participar, ajudar e fazer parte da sua rede.</p>
+        <div class="product-bottom"><span class="arrow">↗</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="studio">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">Camply Studio</div>
+        <h2>Para o que ainda<br>não virou produto.</h2>
+      </div>
+      <p class="section-desc">
+        Design, vídeo, copy, áudio, fotografia, motion e tecnologia. Profissionais para transformar aquilo que você imaginou em realidade.
+      </p>
+    </div>
+
+    <div class="studio">
+      <div class="studio-main">
+        <div class="section-kicker">Studio / custom</div>
+        <h2>Você imagina.<br>A gente constrói.</h2>
+        <p>Nem toda campanha precisa da mesma coisa. O Studio existe para quando a solução precisa ser desenhada do zero.</p>
+        <a class="btn btn-secondary" href="#contato">Encontrar quem faz →</a>
+      </div>
+      <div class="studio-list">
+        <div class="studio-item"><span>Identidade</span>Logo, paleta, tipografia e sistema visual.</div>
+        <div class="studio-item"><span>Conteúdo</span>Artes, banners, cards, capas, stories e posts.</div>
+        <div class="studio-item"><span>Digital</span>Landing pages, eventos, propostas e QR Codes.</div>
+        <div class="studio-item"><span>Campanha</span>Mobilização, voluntários, materiais e experiências.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="contato">
+  <div class="container">
+    <div class="section-kicker">Camply</div>
+    <h2>Pra quem quer<br>ser escolhido.</h2>
+    <p>Comece com um produto. Construa uma presença. Faça seu nome chegar mais longe.</p>
+    <a class="btn btn-primary" href="mailto:hello@camply.space">Começar pelo meu perfil →</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <a class="brand brand-footer" href="#" aria-label="Camply">
+      <img src="camply-logo.png" alt="Camply">
+    </a>
+    <div class="footer-links">
+      <a href="#produtos">Produtos</a>
+      <a href="#studio">Studio</a>
+      <a href="mailto:hello@camply.space">Contato</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  link.addEventListener('click',e=>{
+    const target=document.querySelector(link.getAttribute('href'));
+    if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+</script>
+</body>
+</html>
